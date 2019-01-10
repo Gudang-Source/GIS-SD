@@ -108,7 +108,7 @@ $attributes = array('file' => 'home');
       <section class="content">
         <div class="box box-default">
           <div class="box-body">
-            <h3 align="center"><b>Titik Pembuangan Sampah Umum Di Pekanbaru</b></h3>
+            <h3 align="center"><b>Titik Sekolah Dasar di Pekanbaru</b></h3>
           </div>
           <div class="box-body">
             <form  action="index.php" method="get" class="pull-right mail-src-position">
@@ -118,7 +118,7 @@ $attributes = array('file' => 'home');
             </form>
           </div>
           <div class="box-body">
-            <div id="mapid" style="width: 100%; height: 500px;"></div>
+            <div id="mapid" style="width: 100%; height: 760px;"></div>
           </div>
           <!-- /.box-body -->
         </div>
@@ -186,7 +186,13 @@ $attributes = array('file' => 'home');
   }
 
   ?>
+  var greenIcon = L.icon({
+      iconUrl: 'https://cdn0.iconfinder.com/data/icons/3D-House-png/256/School.png',
 
+      iconSize:     [40, 40], // size of the icon
+      iconAnchor:   [0, 0], // point of the icon which will correspond to marker's location
+      popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
+  });
   <?php    
   if(isset($_GET['alamat'])){
     $alamat = $_GET['alamat'];
@@ -206,12 +212,14 @@ $attributes = array('file' => 'home');
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
                //echo "Name: " . $row["name"]. "<br>";
-     echo 'L.marker(['.$row["y"].', '.$row["x"].']).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Sekolah '.$row["jenis"].'<br><br><img src='.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
+     echo 'L.marker(['.$row["y"].', '.$row["x"].'], {icon: greenIcon}).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Sekolah '.$row["jenis"].'<br><br><img src='.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
    }
  } else {
   echo "0 results";
 }
 ?>
+
+
 
 var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
 '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -255,6 +263,7 @@ var overlays = {
 };
 
 L.control.layers(baseLayers, overlays).addTo(map);
+
 
 var popup = L.popup();
 
