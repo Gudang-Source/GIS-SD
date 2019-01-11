@@ -113,7 +113,7 @@ $attributes = array('file' => 'home');
           <div class="box-body">
             <form  action="index.php" method="get" class="pull-right mail-src-position">
               <div class="input-append">
-                <input type="text" class="form-control " name ="alamat" placeholder="Cari Berdasarkan Jalan">
+                <input type="text" class="form-control " name ="key" placeholder="Nama sekolah, alamat...">
               </div>
             </form>
           </div>
@@ -193,9 +193,9 @@ $attributes = array('file' => 'home');
       popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
     });
   <?php    
-  if(isset($_GET['alamat'])){
-    $alamat = $_GET['alamat'];
-    $sql = "SELECT * FROM sekolah where alamat like '%$alamat%'";
+  if(isset($_GET['key'])){
+    $key = $_GET['key'];
+    $sql = "SELECT * FROM sekolah where nama_sekolah like '%$key%' OR alamat like '%$key%'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) < 1) {
       $sql = 'SELECT * FROM sekolah';
@@ -261,6 +261,16 @@ var overlays = {
 
 L.control.layers(baseLayers, overlays).addTo(map);
 
+var overlays2 = {
+  <?php 
+  $sql = 'SELECT jenis, RIGHT(alamat, InStr(reverse(alamat), ",") - 1) AS alamat FROM sekolah GROUP BY alamat ORDER BY alamat';
+  $result_filter = mysqli_query($conn, $sql);
+  while($row = mysqli_fetch_assoc($result_filter)) { ?>
+    "<?php echo ucfirst(str_replace("_"," ",$row["alamat"])) ?>": <?php echo $row["jenis"]; ?>,
+  <?php } ?>
+};
+
+L.control.layers(null,overlays,{collapsed:false}).addTo(map);
 
 var popup = L.popup();
 
