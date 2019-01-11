@@ -245,11 +245,6 @@ var map = L.map('mapid', {
   ]
 });
 
-var baseLayers = {
-  "Grayscale": grayscale,
-  "Streets": streets
-};
-
 var overlays = {
   <?php 
   $sql = 'SELECT * FROM sekolah group by jenis order by jenis';
@@ -259,9 +254,17 @@ var overlays = {
   <?php } ?>
 };
 
-L.control.layers(baseLayers, overlays).addTo(map);
+L.control.layers(null, overlays, {collapsed:false}).addTo(map);
+$(".leaflet-control-layers-overlays").prepend("<label>Jenis Seklolah</label>");
 
-var overlays2 = {
+var baseLayers = {
+  "Grayscale": grayscale,
+  "Streets": streets
+};
+
+L.control.layers(baseLayers, null).addTo(map);
+
+/*var overlays2 = {
   <?php 
   $sql = 'SELECT jenis, RIGHT(alamat, InStr(reverse(alamat), ",") - 1) AS alamat FROM sekolah GROUP BY alamat ORDER BY alamat';
   $result_filter = mysqli_query($conn, $sql);
@@ -270,7 +273,7 @@ var overlays2 = {
   <?php } ?>
 };
 
-L.control.layers(null,overlays,{collapsed:false}).addTo(map);
+L.control.layers(null,overlays2,{collapsed:false}).addTo(map);*/
 
 var popup = L.popup();
 
