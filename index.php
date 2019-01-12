@@ -155,6 +155,18 @@ $attributes = array('file' => 'home');
  <script src="assetss/dist/js/demo.js"></script>
  <script>
   <?php
+    //edit ini
+  $dbhost = 'localhost';
+  $dbuser = 'root';
+  $dbpass = '';
+  $dbname = 'db_sd';
+    //sampai sini
+  $bool = false;
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname); 
+
+  if(! $conn ) {
+    die('Could not connect: ' . mysqli_error());
+  }
   
     //edit disini *sampah(nama table)
   $sql = 'SELECT * FROM sekolah group by jenis order by jenis';
