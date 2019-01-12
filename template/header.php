@@ -48,40 +48,28 @@
         <div class="col-lg-12">
           <div class="widget-container stats-container">
             <div class="col-md-3">
-              <div class="number">
-                <div class="icon globe"></div>
-                86<small>%</small>
-              </div>
-              <div class="text">
-                Overall growth
-              </div>
+
             </div>
             <div class="col-md-3">
               <div class="number">
                 <div class="icon visitors"></div>
-                613
+                <!-- Tampilkan jumlah yang Swasta lok-->
               </div>
               <div class="text">
-                Unique visitors
+                Sekolah Swasta
               </div>
             </div>
             <div class="col-md-3">
               <div class="number">
                 <div class="icon money"></div>
-                <small>$</small>924
+                <!-- Tampilkan jumlah yang Negri lok-->
               </div>
               <div class="text">
-                Sales
+                Sekolah Negeri
               </div>
             </div>
             <div class="col-md-3">
-              <div class="number">
-                <div class="icon chat-bubbles"></div>
-                325
-              </div>
-              <div class="text">
-                New followers
-              </div>
+              
             </div>
           </div>
         </div>
