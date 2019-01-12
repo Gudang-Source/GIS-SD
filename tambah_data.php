@@ -106,7 +106,7 @@ $attributes = array('file' => 'home');
             <h3 align="center"><b>Titik Sekolah Dasar di Pekanbaru</b></h3>
           </div>
           <div class="box-body">
-            <form  action="tambah_data.php" method="post">
+            <form  action="tambah_data.php" method="post" enctype="multipart/form-data">
               <div class="input-append">
                 <input type="text" class="form-control " name ="nama_sekolah" placeholder="Nama sekolah...">
                 <br>
@@ -118,7 +118,7 @@ $attributes = array('file' => 'home');
                 <br>
                 <input type="text" class="form-control " name ="jenis" placeholder="Jenis...">
                 <br>
-                <input type="file" name="file" id="file">
+                <input type="file" name="file">
               </div>
               <br>
               <input type="submit" name="insert" onclick="insertRow()" />
@@ -179,18 +179,35 @@ $attributes = array('file' => 'home');
     }
 
       //edit disini *sampah(nama table)
-    if(isset($_POST['nama_sekolah']) && isset($_POST['alamat']) && isset($_POST['x']) && isset($_POST['y']) && isset($_POST['jenis'])){
+    if(isset($_POST['nama_sekolah']) && isset($_POST['alamat']) && isset($_POST['x']) && isset($_POST['y']) && isset($_POST['jenis'])) {
     $nama_sekolah = $_POST['nama_sekolah'];
     $alamat = $_POST['alamat'];
     $x = $_POST['x'];
     $y = $_POST['y'];
     $jenis = $_POST['jenis'];
-    $sql = "INSERT INTO sekolah (nama_sekolah, alamat, x, y) VALUES ('$nama_sekolah', '$alamat', '$x', '$y', '$jenis')";
-    if ($conn->query($sql) === TRUE) {
-        echo "New record created successfully";
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
+
+    $ekstensi_diperbolehkan = array('png','jpg');
+      $nama = $_FILES['file']['name'];
+      $xi = explode('.', $nama);
+      $ekstensi = strtolower(end($xi));
+      $ukuran = $_FILES['file']['size'];
+      $file_tmp = $_FILES['file']['tmp_name'];  
+ 
+      if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+        if($ukuran < 3044070){      
+          move_uploaded_file($file_tmp, 'foto/'.$nama);
+          $sql = "INSERT INTO sekolah (nama_sekolah, alamat, x, y, jenis, foto) VALUES ('$nama_sekolah', '$alamat', '$x', '$y', '$jenis', '$nama')";
+          if ($conn->query($sql) === TRUE) {
+              echo 'FILE BERHASIL DI UPLOAD';
+          } else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+        }else{
+          echo 'UKURAN FILE TERLALU BESAR';
+        }
+      }else{
+        echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+      }
 
     $conn->close();
   }
