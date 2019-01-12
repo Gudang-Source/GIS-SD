@@ -56,7 +56,7 @@
                 <!-- Tampilkan jumlah yang Swasta lok-->
               </div>
               <div class="text">
-                Sekolah Swasta
+                Sekolah Negeri
               </div>
             </div>
             <div class="col-md-3">
@@ -65,7 +65,7 @@
                 <!-- Tampilkan jumlah yang Negri lok-->
               </div>
               <div class="text">
-                Sekolah Negeri
+                Sekolah Swasta
               </div>
             </div>
             <div class="col-md-3">
