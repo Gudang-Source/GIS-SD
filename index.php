@@ -72,12 +72,12 @@ $attributes = array('file' => 'home');
       <li class="header">Navigasi</li>
       <li>
         <a href="index.php">
-          <i class="fa fa-trash"></i><span>Semua Jenis</span>
+          <i class="fa fa-map"></i><span>Peta Sekolah</span>
         </a>
       </li>
       <li>
         <a href="tambah_data.php">
-          <i class="fa fa-trash"></i><span>Tambah Data</span>
+          <i class="fa fa-plus"></i><span>Tambah Data</span>
         </a>
       </li>
       <!-- <li class="treeview"">
@@ -187,6 +187,7 @@ $attributes = array('file' => 'home');
       iconAnchor:   [20, 20], // point of the icon which will correspond to marker's location
       popupAnchor:  [20, 0] // point from which the popup should open relative to the iconAnchor
     });
+  
   <?php    
   if(isset($_GET['key'])){
     $key = $_GET['key'];
