@@ -75,35 +75,35 @@ $attributes = array('file' => 'home');
       <div class="widget-container fluid-height">
       	<center><h3>Tambah Titik Sekolah</h3></center>
       	<br>
-      	<form action="#" class="form-horizontal">
+      	<form action="tambah.php" method="post" enctype="multipart/form-data" class="form-horizontal">
           <div class="form-group">
             <label class="control-label col-md-2">Nama Sekolah</label>
             <div class="col-md-9">
-              <input class="form-control" placeholder="Text" type="text">
+              <input class="form-control" type="text" name="nama_sekolah">
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Alamat</label>
             <div class="col-md-9">
-              <textarea class="form-control" rows="3"></textarea>
+              <textarea class="form-control" rows="3" name ="alamat"></textarea>
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Koordinat X</label>
             <div class="col-md-9">
-              <input class="form-control" placeholder="Text" type="text">
+              <input class="form-control" type="text" name ="x">
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Koordinat Y</label>
             <div class="col-md-9">
-              <input class="form-control" placeholder="Text" type="text">
+              <input class="form-control" type="text" name ="y">
             </div>
           </div>
           <div class="form-group">
             <label class="control-label col-md-2">Jenis Sekolah</label>
             <div class="col-md-9">
-              <select class="select2able"><option value="Category 1">Swasta</option><option value="Category 2">Negeri</option></select>
+              <select class="select2able" name ="jenis"><option value="Swasta">Swasta</option><option value="Negeri">Negeri</option></select>
             </div>
           </div>
           <div class="form-group">
@@ -115,15 +115,18 @@ $attributes = array('file' => 'home');
                 </div>
                 <div class="fileupload-preview fileupload-exists img-thumbnail" style="width: 200px; max-height: 150px"></div>
                 <div>
-                  <span class="btn btn-default btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file"></span><a class="btn btn-default fileupload-exists" data-dismiss="fileupload" href="#">Remove</a>
+                  <span class="btn btn-default btn-file"><span class="fileupload-new">Select image</span><span class="fileupload-exists">Change</span><input type="file" name="file"></span><a class="btn btn-default fileupload-exists" data-dismiss="fileupload" href="#">Remove</a>
                 </div>
               </div>
             </div>
           </div>
           <hr>
-          <center>
-          <button class="btn btn-danger ladda-button progress-demo" data-style="expand-right"><span class="ladda-label">Tambahkan Data</span></button>
-          </center>
+          <div class="form-group">
+            <label class="control-label col-md-9"></label>
+            <div class="col-md-2">
+            	<input class="btn btn-primary ladda-button progress-demo" data-style="expand-right" type="submit" name="insert" value="Tambahkan Data" onclick="insertRow()">
+            </div>
+          </div>
       </form>
       </div>
     </div>
@@ -135,3 +138,56 @@ $attributes = array('file' => 'home');
 <br>
 <!-- End Peta -->
 <?php include 'template/footer.php' ?>
+<script>
+  function insertRow(){
+    <?php
+      //edit ini
+    $dbhost = 'localhost';
+    $dbuser = 'root';
+    $dbpass = '';
+    $dbname = 'db_sd';
+      //sampai sini
+    $bool = false;
+    $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname); 
+
+    if(! $conn ) {
+      die('Could not connect: ' . mysqli_error());
+    }
+
+      //edit disini *sampah(nama table)
+    if(isset($_POST['nama_sekolah']) && isset($_POST['alamat']) && isset($_POST['x']) && isset($_POST['y']) && isset($_POST['jenis'])) {
+    $nama_sekolah = $_POST['nama_sekolah'];
+    $alamat = $_POST['alamat'];
+    $x = $_POST['x'];
+    $y = $_POST['y'];
+    $jenis = $_POST['jenis'];
+
+    $ekstensi_diperbolehkan = array('png','jpg');
+      $nama = $_FILES['file']['name'];
+      $xi = explode('.', $nama);
+      $ekstensi = strtolower(end($xi));
+      $ukuran = $_FILES['file']['size'];
+      $file_tmp = $_FILES['file']['tmp_name'];  
+ 
+      if(in_array($ekstensi, $ekstensi_diperbolehkan) === true){
+        if($ukuran < 3044070){      
+          move_uploaded_file($file_tmp, 'foto/'.$nama);
+          $sql = "INSERT INTO sekolah (nama_sekolah, alamat, x, y, jenis, foto) VALUES ('$nama_sekolah', '$alamat', '$x', '$y', '$jenis', '$nama')";
+          if ($conn->query($sql) === TRUE) {
+              echo 'FILE BERHASIL DI UPLOAD';
+          } else {
+              echo "Error: " . $sql . "<br>" . $conn->error;
+          }
+        }else{
+          echo 'UKURAN FILE TERLALU BESAR';
+        }
+      }else{
+        echo 'EKSTENSI FILE YANG DI UPLOAD TIDAK DI PERBOLEHKAN';
+      }
+
+    $conn->close();
+  }
+  ?>
+  }
+
+</script>
