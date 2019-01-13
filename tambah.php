@@ -28,38 +28,6 @@
     </div>
     <!-- End Navigation -->
     <div class="container-fluid main-content">
-      <!-- Statistics -->
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="widget-container stats-container">
-            <div class="col-md-3">
-
-            </div>
-            <div class="col-md-3">
-              <div class="number">
-                <div class="icon visitors"></div>
-                <!-- Tampilkan jumlah yang Swasta lok-->
-              </div>
-              <div class="text">
-                Sekolah Negeri
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="number">
-                <div class="icon money"></div>
-                <!-- Tampilkan jumlah yang Negri lok-->
-              </div>
-              <div class="text">
-                Sekolah Swasta
-              </div>
-            </div>
-            <div class="col-md-3">
-              
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Statistics -->
 
 <?php 
 $attributes = array('file' => 'home');
