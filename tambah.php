@@ -5,9 +5,9 @@
     <div class="navbar navbar-fixed-top scroll-hide">
       <div class="container-fluid top-bar">
         <div class="pull-right">
-          <a class="logo" href="home.php">PEKANBARU</a>
+          <a class="logo" href="index.php">PEKANBARU</a>
         </div>
-        <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="home.php">GIS-SD</a>
+        <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="index.php">GIS-SD</a>
         <form  class="navbar-form form-inline col-lg-2 hidden-xs">
           <input class="form-control" placeholder="Search" type="text">
         </form>
@@ -16,7 +16,7 @@
         <div class="nav-collapse">
           <ul class="nav">
             <li>
-              <a href="home.php"><span aria-hidden="true" class="hightop-home"></span>Peta Sekolah</a>
+              <a href="index.php"><span aria-hidden="true" class="hightop-home"></span>Peta Sekolah</a>
             </li>
             
             <li><a class="current" href="tambah.php">
