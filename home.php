@@ -3,8 +3,12 @@
 <?php 
 $attributes = array('file' => 'home');
 ?>
+<div class="row">
+  <form  action="home.php" method="get" class="navbar-form form-inline col-lg-2 hidden-xs">
+          <p>Cari Berdasarkan : <input class="form-control" placeholder="Nama Sekolah atau Alamat" type="text" name ="key"></p>
+        </form>
+</div>
 <!-- Peta -->
-<br>
 <div class="grid-structure">
   <div class="row">
     <div class="col-md-12">

@@ -23,8 +23,8 @@
           <a class="logo" href="home.php">PEKANBARU</a>
         </div>
         <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="home.php">GIS-SD</a>
-        <form  action="home.php" method="get" class="navbar-form form-inline col-lg-2 hidden-xs">
-          <input class="form-control" placeholder="Search" type="text" name ="key">
+        <form  class="navbar-form form-inline col-lg-2 hidden-xs">
+          <input class="form-control" placeholder="Search" type="text">
         </form>
       </div>
       <div class="container-fluid main-nav clearfix">
