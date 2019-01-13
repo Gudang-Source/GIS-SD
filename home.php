@@ -1,5 +1,18 @@
 <?php include 'template/header.php' ?>
+<?php
+    //edit ini
+  $dbhost = 'localhost';
+  $dbuser = 'root';
+  $dbpass = '';
+  $dbname = 'db_sd';
+    //sampai sini
+  $bool = false;
+  $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname); 
 
+  if(! $conn ) {
+    die('Could not connect: ' . mysqli_error());
+  }
+  ?>
 <body class="page-header-fixed bg-1">
   <div class="modal-shiftfix">
     <!-- Navigation -->
@@ -38,8 +51,18 @@
             </div>
             <div class="col-md-3">
               <div class="number">
-                <div class="icon visitors"></div>
-                <!-- Tampilkan jumlah yang Swasta lok-->
+                <?php
+                $sql = 'SELECT COUNT(id_sekolah) AS negeri FROM sekolah WHERE jenis="Negeri"';
+                $result_filter = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result_filter) > 0) {
+                  while($row = mysqli_fetch_assoc($result_filter)) { 
+                    echo $row["negeri"];
+                 }
+                } else {
+                  echo "0";
+                }
+                ?>
               </div>
               <div class="text">
                 Sekolah Negeri
@@ -47,8 +70,18 @@
             </div>
             <div class="col-md-3">
               <div class="number">
-                <div class="icon money"></div>
-                <!-- Tampilkan jumlah yang Negri lok-->
+                <?php
+                $sql = 'SELECT COUNT(id_sekolah) AS negeri FROM sekolah WHERE jenis="Swasta"';
+                $result_filter = mysqli_query($conn, $sql);
+
+                if (mysqli_num_rows($result_filter) > 0) {
+                  while($row = mysqli_fetch_assoc($result_filter)) { 
+                    echo $row["negeri"];
+                 }
+                } else {
+                  echo "0";
+                }
+                ?>
               </div>
               <div class="text">
                 Sekolah Swasta
@@ -84,19 +117,7 @@ $attributes = array('file' => 'home');
 <!-- End Peta -->
 
 <script>
-  <?php
-    //edit ini
-  $dbhost = 'localhost';
-  $dbuser = 'root';
-  $dbpass = '';
-  $dbname = 'db_sd';
-    //sampai sini
-  $bool = false;
-  $conn = mysqli_connect($dbhost, $dbuser, $dbpass,$dbname); 
-
-  if(! $conn ) {
-    die('Could not connect: ' . mysqli_error());
-  }
+<?php
 
     //edit disini *sampah(nama table)
   $sql = 'SELECT * FROM sekolah group by jenis order by jenis';
