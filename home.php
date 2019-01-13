@@ -1,5 +1,67 @@
 <?php include 'template/header.php' ?>
 
+<body class="page-header-fixed bg-1">
+  <div class="modal-shiftfix">
+    <!-- Navigation -->
+    <div class="navbar navbar-fixed-top scroll-hide">
+      <div class="container-fluid top-bar">
+        <div class="pull-right">
+          <a class="logo" href="home.php">PEKANBARU</a>
+        </div>
+        <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="home.php">GIS-SD</a>
+        <form  class="navbar-form form-inline col-lg-2 hidden-xs">
+          <input class="form-control" placeholder="Search" type="text">
+        </form>
+      </div>
+      <div class="container-fluid main-nav clearfix">
+        <div class="nav-collapse">
+          <ul class="nav">
+            <li>
+              <a class="current" href="home.php"><span aria-hidden="true" class="hightop-home"></span>Peta Sekolah</a>
+            </li>
+            
+            <li><a href="tambah.php">
+              <span aria-hidden="true" class="hightop-forms"></span>Tambah Data</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- End Navigation -->
+    <div class="container-fluid main-content">
+      <!-- Statistics -->
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="widget-container stats-container">
+            <div class="col-md-3">
+
+            </div>
+            <div class="col-md-3">
+              <div class="number">
+                <div class="icon visitors"></div>
+                <!-- Tampilkan jumlah yang Swasta lok-->
+              </div>
+              <div class="text">
+                Sekolah Negeri
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="number">
+                <div class="icon money"></div>
+                <!-- Tampilkan jumlah yang Negri lok-->
+              </div>
+              <div class="text">
+                Sekolah Swasta
+              </div>
+            </div>
+            <div class="col-md-3">
+              
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End Statistics -->
+
 <?php 
 $attributes = array('file' => 'home');
 ?>
@@ -159,4 +221,3 @@ mymap.on('click', onMapClick);
 
 
 </script>
-<?php include 'template/footer.php' ?>
