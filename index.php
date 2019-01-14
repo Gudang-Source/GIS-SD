@@ -158,7 +158,7 @@ $attributes = array('file' => 'home');
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
                //echo "Name: " . $row["name"]. "<br>";
-     echo 'L.marker(['.$row["y"].', '.$row["x"].'], {icon: greenIcon}).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Jenis : Sekolah '.$row["jenis"].'<br><br><img src=foto/'.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
+     echo 'L.marker(['.$row["y"].', '.$row["x"].'], {icon: greenIcon}).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Jenis: Sekolah '.$row["jenis"].'<br><br><img src=foto/'.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
    }
  } else {
   echo "0 results";
