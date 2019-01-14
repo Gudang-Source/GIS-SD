@@ -19,7 +19,7 @@
     <div class="navbar navbar-fixed-top scroll-hide">
       <div class="container-fluid top-bar">
         <div class="pull-right">
-          <a class="logo" href="index.php">PEKANBARU</a>
+          <a class="logo" href="index.php">SEKOLAH DASAR NEGERI-SWASTA PEKANBARU</a>
         </div>
         <button class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="logo" href="index.php">GIS-SD</a>
         <form  class="navbar-form form-inline col-lg-2 hidden-xs">
@@ -158,7 +158,7 @@ $attributes = array('file' => 'home');
   if (mysqli_num_rows($result) > 0) {
     while($row = mysqli_fetch_assoc($result)) {
                //echo "Name: " . $row["name"]. "<br>";
-     echo 'L.marker(['.$row["y"].', '.$row["x"].'], {icon: greenIcon}).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Sekolah '.$row["jenis"].'<br><br><img src=foto/'.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
+     echo 'L.marker(['.$row["y"].', '.$row["x"].'], {icon: greenIcon}).bindPopup("<b><h4>'.$row["nama_sekolah"].'</b></h4>'.$row["alamat"].'<br>Jenis : Sekolah '.$row["jenis"].'<br><br><img src=foto/'.$row["foto"].' width=273 height=220> ").addTo('.$row["jenis"].');';
    }
  } else {
   echo "0 results";
@@ -242,3 +242,4 @@ mymap.on('click', onMapClick);
 
 
 </script>
+<?php include 'template/footer.php' ?>
